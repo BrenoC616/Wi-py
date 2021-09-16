@@ -4,6 +4,13 @@
 from selenium import webdriver
 from time import sleep
 from selenium.webdriver.common.keys import Keys
+import logging
+
+logging.basicConfig(
+    filename = "wipy.log", # Or /home/user/Public/YourFolder/wipy.log
+    level = logging.INFO, 
+    format = "%(asctime)s - [Nível: %(levelno)s/INFO] [Função: %(funcName)s] [Ação: %(message)s]"
+)
 
 ### ELEMENTOS
 buttonAdd = 'addFilterMac'
@@ -11,17 +18,17 @@ buttonDelete = 'deleteSelFilterMac'
 buttonLogin = 'loginBtn'
 buttonSetup = 'setupList'
 macAddress = {
-    1: "70fd46d107f4",
-    2: "48516922adea",
-    3: "44d87840fe0d",
-    4: "2cd9742d087e",
-    5: "a463a12077f3",
-    6: "a43ea0f17f04",
-    7: "c8c750a7ab00",
-    8: "00197d8d4bc7",
-    9: "58b3fc2fa694",
-    10: "60684e418322",
-    11: "ecb1d7fbb328"
+    1: "deviceMacAddress", #Ex.: af:53:3c:2f:a2:94 -> af533c2fa294
+    2: "deviceMacAddress",
+    3: "deviceMacAddress",
+    4: "deviceMacAddress",
+    5: "deviceMacAddress",
+    6: "deviceMacAddress",
+    7: "deviceMacAddress",
+    8: "deviceMacAddress",
+    9: "deviceMacAddress",
+    10: "deviceMacAddress",
+    11: "deviceMacAddress"
 }
 inputMAC = 'mac'
 optionWireless = "http://192.168.0.1/wlan_basic.htm"
@@ -39,47 +46,47 @@ def validate():
     
     while True:  
 
-        if device == 'a10Joao':
+        if device == 'deviceName':
             i = 1
             xpath = '//*[@value="%s"]' % macAddress[i] #XPATH (Ex.: //*[@value="70fd46d107f4"])
             break
-        elif device == 'a10Breno':
+        elif device == 'deviceName':
             i = 2
             xpath = '//*[@value="%s"]' % macAddress[i]
             break
-        elif device == 'tvQuartoBJ':
+        elif device == 'deviceName':
             i = 3
             xpath = '//*[@value="%s"]' % macAddress[i]
             break
-        elif device == 'tvSala':
+        elif device == 'deviceName':
             i = 4
             xpath = '//*[@value="%s"]' % macAddress[i]
             break
-        elif device == 'tvQuartoB':
-            i = 4
+        elif device == 'deviceName':
+            i = 5
             xpath = '//*[@value="%s"]' % macAddress[i]
             break
-        elif device == 'tvBox':
+        elif device == 'deviceName':
             i = 6
             xpath = '//*[@value="%s"]' % macAddress[i]
             break
-        elif device == 'e6Mae':
+        elif device == 'deviceName':
             i = 7
             xpath = '//*[@value="%s"]' % macAddress[i]
             break
-        elif device == 'noteBreno':
+        elif device == 'deviceName':
             i = 8
             xpath = '//*[@value="%s"]' % macAddress[i]
             break
-        elif device == 'noteBruna':
+        elif device == 'deviceName':
             i = 9
             xpath = '//*[@value="%s"]' % macAddress[i]
             break
-        elif device == 'a32Bruna':
+        elif device == 'deviceName':
             i = 10
             xpath = '//*[@value="%s"]' % macAddress[i]
             break
-        elif device == 'hpPrint':
+        elif device == 'deviceName':
             i = 11
             xpath = '//*[@value="%s"]' % macAddress[i]
             break
@@ -88,6 +95,8 @@ def validate():
             break
         else:
             device = input("Dispositivo não existe! (Digite um dispositivo existente): ")
+
+    logging.info("Dispositivo %s escolhido!" % device)
             
 ### FUNÇÃO CONECTAR E ENTRAR
 def login_enter():
@@ -120,6 +129,8 @@ def login_enter():
     print("Cofiguração ACL acessado!")
     sleep(2)
 
+    logging.info("Entrou na Rede!")
+
 ### FUNÇÃO DELETAR
 def delete(): 
 
@@ -139,6 +150,8 @@ def delete():
 
     print("Dispositivo %s deletado da rede!" % device)
 
+    logging.info("Deletou Dispositivo %s!" % device)
+
 ### FUNÇÃO ADICIONAR
 def add():   
 
@@ -153,6 +166,8 @@ def add():
     buttonAddElement.click()
 
     print("Dispositivo %s adicionado na rede!" % device)
+
+    logging.info("Adicionou Dispositivo %s!" % device)
 
 init = input("Quer iniciar? (s/n):")
 
