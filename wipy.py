@@ -6,12 +6,6 @@ from time import sleep
 from selenium.webdriver.common.keys import Keys
 import logging
 
-logging.basicConfig(
-    filename = "wipy.log", # Or /home/user/Public/YourFolder/wipy.log
-    level = logging.INFO, 
-    format = "%(asctime)s - [Nível: %(levelno)s/INFO] [Função: %(funcName)s] [Ação: %(message)s]"
-)
-
 ### ELEMENTOS
 buttonAdd = 'addFilterMac'
 buttonDelete = 'deleteSelFilterMac'
