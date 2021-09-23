@@ -54,57 +54,57 @@ def validate():
         
         if device == 'a10Joao':
             i = 1
-            xpath = '//*[@value="%s"]' % macAddress[i] #XPATH (Ex.: //*[@value="af533c2fa294"])
+            xpath = f'//*[@value="{macAddress[i]}"]' #XPATH (Ex.: //*[@value="af533c2fa294"])
             return device
             break
         elif device == 'a10Breno':
             i = 2
-            xpath = '//*[@value="%s"]' % macAddress[i]
+            xpath = f'//*[@value="{macAddress[i]}"]'
             return device
             break
         elif device == 'tvQuartoBreno':
             i = 3
-            xpath = '//*[@value="%s"]' % macAddress[i]
+            xpath = f'//*[@value="{macAddress[i]}"]'
             return device
             break
         elif device == 'tvSala':
             i = 4
-            xpath = '//*[@value="%s"]' % macAddress[i]
+            xpath = f'//*[@value="{macAddress[i]}"]'
             return device
             break
         elif device == 'tvQuartoBruna':
             i = 5
-            xpath = '//*[@value="%s"]' % macAddress[i]
+            xpath = f'//*[@value="{macAddress[i]}"]'
             return device
             break
         elif device == 'tvBox':
             i = 6
-            xpath = '//*[@value="%s"]' % macAddress[i]
+            xpath = f'//*[@value="{macAddress[i]}"]'
             return device
             break
         elif device == 'e6Mae':
             i = 7
-            xpath = '//*[@value="%s"]' % macAddress[i]
+            xpath = f'//*[@value="{macAddress[i]}"]'
             return device
             break
         elif device == 'noteBreno':
             i = 8
-            xpath = '//*[@value="%s"]' % macAddress[i]
+            xpath = f'//*[@value="{macAddress[i]}"]'
             return device
             break
         elif device == 'noteBruna':
             i = 9
-            xpath = '//*[@value="%s"]' % macAddress[i]
+            xpath = f'//*[@value="{macAddress[i]}"]'
             return device
             break
         elif device == 'a32Bruna':
             i = 10
-            xpath = '//*[@value="%s"]' % macAddress[i]
+            xpath = f'//*[@value="{macAddress[i]}"]'
             return device
             break
         elif device == 'hpPrint':
             i = 11
-            xpath = '//*[@value="%s"]' % macAddress[i]
+            xpath = f'//*[@value="{macAddress[i]}"]'
             return device
             break
         elif device == 'exit':
@@ -114,7 +114,7 @@ def validate():
         else:
             device = input("Dispositivo não existe! (Digite um dispositivo existente): ")
 
-    logging.info("Dispositivo %s escolhido!" % device)
+    logging.info(f"Dispositivo {device} escolhido!")
             
 ### FUNÇÃO: CONECTAR NO ROTEADOR E ENTRAR EM CONFIG ACL
 def login_enter():
@@ -156,7 +156,7 @@ def delete():
 
     selectMACElement.click()
 
-    print("Dispositivo %s escolhido!" % device)
+    print(f"Dispositivo {device} escolhido!")
     sleep(2)
 
     buttonDeleteElement = navegador.find_element_by_name(buttonDelete)
@@ -166,9 +166,9 @@ def delete():
     alerta = navegador.switch_to.alert
     alerta.accept()
 
-    print("Dispositivo %s deletado da rede!" % device)
+    print(f"Dispositivo {device} deletado da rede!")
 
-    logging.info("Deletou Dispositivo %s!" % device)
+    logging.info(f"Deletou Dispositivo {device}!")
 
 ### FUNÇÃO: ADICIONAR
 def add():   
@@ -183,9 +183,9 @@ def add():
 
     buttonAddElement.click()
 
-    print("Dispositivo %s adicionado na rede!" % device)
+    print(f"Dispositivo {device} adicionado na rede!")
 
-    logging.info("Adicionou Dispositivo %s!" % device)
+    logging.info(f"Adicionou Dispositivo {device}!")
 
 ### FUNÇÃO: FECHAR NAVEGADOR
 def close_browser(secs):
