@@ -116,7 +116,7 @@ def add():
 
     inputMACElement.click()
 
-    inputMACElement.send_keys(macAddress[i])
+    inputMACElement.send_keys(wirelessClients[f"{device}"]["reduced-mac-address"])
 
     buttonAddElement = navegador.find_element_by_name(buttonAdd)
 
