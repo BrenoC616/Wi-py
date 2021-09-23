@@ -1,0 +1,93 @@
+{
+    "valid-devices" : [
+        "Default-1",
+        "Default-2",
+        "Default-3",
+        "Default-4",
+        "Default-5",
+        "Default-6",
+        "Default-7",
+        "Default-8",
+        "Default-9",
+        "Default-10",
+        "Default-11"
+    ]
+    ,
+    "Default-1" : {
+        "call-name" : "Default One",
+        "name" : "Unknown",
+        "ip-address" : "192.168.0.1",
+        "mac-address" : "45:b0:a7:kl:by:78",
+        "reduced-mac-address" : "45b0a7klby78"
+    },
+    "Default-2" : {
+        "call-name" : "Default Two",
+        "name" : "Unknown",
+        "ip-address" : "192.168.0.2",
+        "mac-address" : "45:b0:a7:kl:by:78",
+        "reduced-mac-address" : "45b0a7klby78"
+    },
+    "Default-3" : {
+        "call-name" : "Default Three",
+        "name" : "Unknown",
+        "ip-address" : "192.168.0.3",
+        "mac-address" : "45:b0:a7:kl:by:78",
+        "reduced-mac-address" : "45b0a7klby78"
+    },
+    "Default-4" : {
+        "call-name" : "Default Four",
+        "name" : "Unknown",
+        "ip-address" : "192.168.0.4",
+        "mac-address" : "45:b0:a7:kl:by:78",
+        "reduced-mac-address" : "45b0a7klby78"
+    },
+    "Default-5" : {
+        "call-name" : "Default Five",
+        "name" : "Unknown",
+        "ip-address" : "192.168.0.5",
+        "mac-address" : "45:b0:a7:kl:by:78",
+        "reduced-mac-address" : "45b0a7klby78"
+    },
+    "Default-6" : {
+        "call-name" : "Default Six",
+        "name" : "Unknown",
+        "ip-address" : "192.168.0.6",
+        "mac-address" : "45:b0:a7:kl:by:78",
+        "reduced-mac-address" : "45b0a7klby78"
+    },
+    "Default-7" : {
+        "call-name" : "Default Seven",
+        "name" : "Unknown",
+        "ip-address" : "192.168.0.7",
+        "mac-address" : "45:b0:a7:kl:by:78",
+        "reduced-mac-address" : "45b0a7klby78"
+    },
+    "Default-8" : {
+        "call-name" : "Default Eight",
+        "name" : "Unknown",
+        "ip-address" : "192.168.0.8",
+        "mac-address" : "45:b0:a7:kl:by:78",
+        "reduced-mac-address" : "45b0a7klby78"
+    },
+    "Default-9" : {
+        "call-name" : "Default Nine",
+        "name" : "Unknown",
+        "ip-address" : "192.168.0.9",
+        "mac-address" : "45:b0:a7:kl:by:78",
+        "reduced-mac-address" : "45b0a7klby78"
+    },
+    "Default-10" : {
+        "call-name" : "Default Ten",
+        "name" : "Unknown",
+        "ip-address" : "192.168.0.10",
+        "mac-address" : "45:b0:a7:kl:by:78",
+        "reduced-mac-address" : "45b0a7klby78"
+    },
+    "Default-11" : {
+        "call-name" : "Default Eleven",
+        "name" : "Unknown",
+        "ip-address" : "192.168.0.11",
+        "mac-address" : "45:b0:a7:kl:by:78",
+        "reduced-mac-address" : "45b0a7klby78"
+    }
+}

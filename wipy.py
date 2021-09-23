@@ -5,6 +5,7 @@ from selenium import webdriver
 from time import sleep
 from selenium.webdriver.common.keys import Keys
 import logging
+import json
 
 logging.basicConfig(
     filename = "wipy.log", # Or /home/Your-User/Public/YourFolder/wipy.log
@@ -17,78 +18,26 @@ buttonAdd = 'addFilterMac'
 buttonDelete = 'deleteSelFilterMac'
 buttonLogin = 'loginBtn'
 buttonSetup = 'setupList'
-macAddress = {
-    1: "deviceMacAddress", #Ex.: af:53:3c:2f:a2:94 -> af533c2fa294
-    2: "deviceMacAddress",
-    3: "deviceMacAddress",
-    4: "deviceMacAddress",
-    5: "deviceMacAddress",
-    6: "deviceMacAddress",
-    7: "deviceMacAddress",
-    8: "deviceMacAddress",
-    9: "deviceMacAddress",
-    10: "deviceMacAddress",
-    11: "deviceMacAddress"
-}
 inputMAC = 'mac'
 optionWireless = "http://192.168.0.1/wlan_basic.htm"
 optionWirelessAdvanced = "http://192.168.0.1/wladvanced.htm"
 url = 'http://192.168.0.1/login.htm'
+
+dados = open("wirelessClients.json", "r") # Or /home/Your-User/Public/Your-Folder/wirelessClients.json
+wirelessClients = json.load(dados)
 
 ### FUNÇÃO VALIDAÇÃO
 def validate():
 
     global device
     global xpath
-    global i
 
     device = input("Diga nome do dispositivo: ")
     
-    while True:  
+    while True:
 
-        if device == 'deviceName':
-            i = 1
-            xpath = '//*[@value="%s"]' % macAddress[i] #XPATH (Ex.: //*[@value="70fd46d107f4"])
-            break
-        elif device == 'deviceName':
-            i = 2
-            xpath = '//*[@value="%s"]' % macAddress[i]
-            break
-        elif device == 'deviceName':
-            i = 3
-            xpath = '//*[@value="%s"]' % macAddress[i]
-            break
-        elif device == 'deviceName':
-            i = 4
-            xpath = '//*[@value="%s"]' % macAddress[i]
-            break
-        elif device == 'deviceName':
-            i = 5
-            xpath = '//*[@value="%s"]' % macAddress[i]
-            break
-        elif device == 'deviceName':
-            i = 6
-            xpath = '//*[@value="%s"]' % macAddress[i]
-            break
-        elif device == 'deviceName':
-            i = 7
-            xpath = '//*[@value="%s"]' % macAddress[i]
-            break
-        elif device == 'deviceName':
-            i = 8
-            xpath = '//*[@value="%s"]' % macAddress[i]
-            break
-        elif device == 'deviceName':
-            i = 9
-            xpath = '//*[@value="%s"]' % macAddress[i]
-            break
-        elif device == 'deviceName':
-            i = 10
-            xpath = '//*[@value="%s"]' % macAddress[i]
-            break
-        elif device == 'deviceName':
-            i = 11
-            xpath = '//*[@value="%s"]' % macAddress[i]
+        if device in wirelessClients["valid-devices"]:
+            xpath = '//*[@value="%s"]' % wirelessClients[f"{device}"]["reduced-mac-address"] #XPATH (Ex.: //*[@value="71f34vd707fk"])
             break
         elif device == 'exit':
             print("Seleção de dispositivo foi fechada!")
@@ -96,7 +45,7 @@ def validate():
         else:
             device = input("Dispositivo não existe! (Digite um dispositivo existente): ")
 
-    logging.info("Dispositivo %s escolhido!" % device)
+    logging.info(f"Dispositivo {device} escolhido!")
             
 ### FUNÇÃO CONECTAR E ENTRAR
 def login_enter():
@@ -138,7 +87,7 @@ def delete():
 
     selectMACElement.click()
 
-    print("Dispositivo %s escolhido!" % device)
+    print(f"Dispositivo {device} escolhido!")
     sleep(2)
 
     buttonDeleteElement = navegador.find_element_by_name(buttonDelete)
@@ -148,9 +97,9 @@ def delete():
     alerta = navegador.switch_to.alert
     alerta.accept()
 
-    print("Dispositivo %s deletado da rede!" % device)
+    print(f"Dispositivo {device} deletado da rede!")
 
-    logging.info("Deletou Dispositivo %s!" % device)
+    logging.info(f"Deletou Dispositivo {device}!")
 
 ### FUNÇÃO ADICIONAR
 def add():   
@@ -159,15 +108,15 @@ def add():
 
     inputMACElement.click()
 
-    inputMACElement.send_keys(macAddress[i])
+    inputMACElement.send_keys(wirelessClients[f"{device}"]["reduced-mac-address"])
 
     buttonAddElement = navegador.find_element_by_name(buttonAdd)
 
     buttonAddElement.click()
 
-    print("Dispositivo %s adicionado na rede!" % device)
+    print(f"Dispositivo {device} adicionado na rede!")
 
-    logging.info("Adicionou Dispositivo %s!" % device)
+    logging.info(f"Adicionou Dispositivo {device}!")
 
 init = input("Quer iniciar? (s/n):")
 
