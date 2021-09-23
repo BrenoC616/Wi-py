@@ -5,29 +5,20 @@ from selenium import webdriver
 from time import sleep
 from selenium.webdriver.common.keys import Keys
 import logging
+import json
 
 ### ELEMENTOS
 buttonAdd = 'addFilterMac'
 buttonDelete = 'deleteSelFilterMac'
 buttonLogin = 'loginBtn'
 buttonSetup = 'setupList'
-macAddress = {
-    1: "deviceMacAddress", #Ex.: af:53:3c:2f:a2:94 -> af533c2fa294
-    2: "deviceMacAddress",
-    3: "deviceMacAddress",
-    4: "deviceMacAddress",
-    5: "deviceMacAddress",
-    6: "deviceMacAddress",
-    7: "deviceMacAddress",
-    8: "deviceMacAddress",
-    9: "deviceMacAddress",
-    10: "deviceMacAddress",
-    11: "deviceMacAddress"
-}
 inputMAC = 'mac'
 optionWireless = "http://192.168.0.1/wlan_basic.htm"
 optionWirelessAdvanced = "http://192.168.0.1/wladvanced.htm"
 url = 'http://192.168.0.1/login.htm'
+
+dados = open("wirelessClients.json", "r") # Or /home/Your-User/Public/Your-Folder/wirelessClients.json
+wirelessClients = json.load(dados)
 
 ### FUNÇÃO: ABRIR NAGEVADOR E ACESSAR URL
 def open_browser():
@@ -52,60 +43,8 @@ def validate():
     
     while True:  
         
-        if device == 'a10Joao':
-            i = 1
-            xpath = f'//*[@value="{macAddress[i]}"]' #XPATH (Ex.: //*[@value="af533c2fa294"])
-            return device
-            break
-        elif device == 'a10Breno':
-            i = 2
-            xpath = f'//*[@value="{macAddress[i]}"]'
-            return device
-            break
-        elif device == 'tvQuartoBreno':
-            i = 3
-            xpath = f'//*[@value="{macAddress[i]}"]'
-            return device
-            break
-        elif device == 'tvSala':
-            i = 4
-            xpath = f'//*[@value="{macAddress[i]}"]'
-            return device
-            break
-        elif device == 'tvQuartoBruna':
-            i = 5
-            xpath = f'//*[@value="{macAddress[i]}"]'
-            return device
-            break
-        elif device == 'tvBox':
-            i = 6
-            xpath = f'//*[@value="{macAddress[i]}"]'
-            return device
-            break
-        elif device == 'e6Mae':
-            i = 7
-            xpath = f'//*[@value="{macAddress[i]}"]'
-            return device
-            break
-        elif device == 'noteBreno':
-            i = 8
-            xpath = f'//*[@value="{macAddress[i]}"]'
-            return device
-            break
-        elif device == 'noteBruna':
-            i = 9
-            xpath = f'//*[@value="{macAddress[i]}"]'
-            return device
-            break
-        elif device == 'a32Bruna':
-            i = 10
-            xpath = f'//*[@value="{macAddress[i]}"]'
-            return device
-            break
-        elif device == 'hpPrint':
-            i = 11
-            xpath = f'//*[@value="{macAddress[i]}"]'
-            return device
+        if device in wirelessClients["valid-devices"]:
+            xpath = '//*[@value="%s"]' % wirelessClients[f"{device}"]["reduced-mac-address"] #XPATH (Ex.: //*[@value="71f34vd707fk"])
             break
         elif device == 'exit':
             print("Seleção de dispositivo foi fechada!")
