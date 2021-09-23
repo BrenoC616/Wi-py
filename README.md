@@ -18,17 +18,17 @@ Primeiramente, para usar a ferramenta é preciso instalar as dependências neces
 
 A base do código é feita totalmente em Python, então para que o mesmo funcione é necessário a instalação do **Python 3** e o gerenciador de pacotes **pip**.
 
-    Importante: Passos serão referentes à instalação em um ambiente Linux através do gerenciador de pacotes.
+**Importante:** Passos serão referentes à instalação em um ambiente Linux através do gerenciador de pacotes.
 
 1. Verifique se já tem o Python instalado, se você usa GNU/Linux, provavelmente já possui alguma versão do Python instalada por padrão. Para conferir, digite em um terminal:
 
-    **```$ which python```**
+    	~$ which python
 
     ou 
 
-    **```$ which python3```**
+    	~$ which python3
 
-    que deve retornar algo como **```/usr/bin/python```** ou **```/usr/bin/python3```**. Isso significa que o Python está instalado nesse endereço.
+    que deve retornar algo como **`/usr/bin/python`** ou **`/usr/bin/python3`**. Isso significa que o **Python** está instalado nesse endereço.
 
     <br>
 
@@ -38,11 +38,11 @@ A base do código é feita totalmente em Python, então para que o mesmo funcion
 
     Para instalar o Python 3, digite em um terminal:
 
-    **```$ sudo apt-get install python3```**
+    	~$ sudo apt-get install python3
 
     Para instalar o gerenciador de pacotes pip, digite em um terminal:
 
-    **```$ sudo apt-get install python3-pip```**
+    	~$ sudo apt-get install python3-pip
 
     <br>
 
@@ -50,11 +50,11 @@ A base do código é feita totalmente em Python, então para que o mesmo funcion
 
     Para instalar o Python 3, digite em um terminal:
 
-    **```$ sudo yum install python3```**
+    	~$ sudo yum install python3
 
     Para instalar o gerenciador de pacotes pip, digite em um terminal:
 
-    **```$ yum -y install python3-pip```**
+    	~$ yum -y install python3-pip
 
 <br>
 
@@ -62,23 +62,22 @@ A base do código é feita totalmente em Python, então para que o mesmo funcion
 
 Além do Python 3, é de grande importância a instalação das dependências do Selenium, para a comunicação da ferramenta com o navegador.
 
-    Importante: A ferramenta é compatível e funcionará apenas no Navegador Web Firefox.
-
-    Em breve suporte para outros navegadores.
-
+**Importante:** A ferramenta é compatível e funcionará apenas no Navegador Web Firefox.
+<br>
+Em breve suporte para outros navegadores.
 <br>
 
-    Importante: Não apague o arquivo Driver "geckodriver"!
-
-    Ele necessário para a integração do Selenium com o Navegador. 
+**Importante:** Não apague o arquivo Driver "geckodriver"!
+Ele necessário para a integração do Selenium com o Navegador.
+<br>
 
 1. Se você tiver pip em seu sistema, pode simplesmente instalar ou atualizar as ligações Python:
 
-    **```$ pip install selenium```**
+    	~$ pip install selenium
 
     ou
 
-    **```$ pip install -U selenium```**
+    	~$ pip install -U selenium
 
     
     <br>
@@ -88,22 +87,22 @@ Além do Python 3, é de grande importância a instalação das dependências do
 
 Agora com tudo instalado pode-se de iniciar o programa com o seguinte comando:
 
-**```$ python wipy.py```**
+	~$ python wipy.py
 
 ou
 
-**```$ python3 wipy.py```**
+	~$ python3 wipy.py
 
 ![](github/gif/giphy.gif)
 
 Também é possível fazer a criação de um **alias** em ambientes Linux, assim facilitando a execução do programa. Para isso usa-se o seguinte comando:
 
-**```$ alias [Nome do alias]="[Comando bash entre aspas.]"```**
+	~$ alias [Nome do alias]="[Comando bash entre aspas.]"
 
 **Ex.:** 
 
-**```$ alias wipy="python3 wipy.py"```**
+	~$ alias wipy="python3 wipy.py"
 
 Agora basta usar o **alias** para executar o programa.
 
-**```$ wipy```**
+	~$ wipy
