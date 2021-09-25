@@ -1,11 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-from selenium import webdriver
-from time import sleep
-from selenium.webdriver.common.keys import Keys
 import logging
-import json
+from wipyfunctions import *
 
 logging.basicConfig(
     filename = "wipy.log", # Or /home/Your-User/Public/YourFolder/wipy.log
@@ -13,121 +10,12 @@ logging.basicConfig(
     format = "%(asctime)s - [Nível: %(levelno)s/INFO] [Função: %(funcName)s] [Ação: %(message)s]"
 )
 
-### ELEMENTOS
-buttonAdd = 'addFilterMac'
-buttonDelete = 'deleteSelFilterMac'
-buttonLogin = 'loginBtn'
-buttonSetup = 'setupList'
-inputMAC = 'mac'
-optionWireless = "http://192.168.0.1/wlan_basic.htm"
-optionWirelessAdvanced = "http://192.168.0.1/wladvanced.htm"
-url = 'http://192.168.0.1/login.htm'
-
-dados = open("wirelessClients.json", "r") # Or /home/Your-User/Public/Your-Folder/wirelessClients.json
-wirelessClients = json.load(dados)
-
-### FUNÇÃO VALIDAÇÃO
-def validate():
-
-    global device
-    global xpath
-
-    device = input("Diga nome do dispositivo: ")
-    
-    while True:
-
-        if device in wirelessClients["valid-devices"]:
-            xpath = '//*[@value="%s"]' % wirelessClients[f"{device}"]["reduced-mac-address"] #XPATH (Ex.: //*[@value="71f34vd707fk"])
-            break
-        elif device == 'exit':
-            print("Seleção de dispositivo foi fechada!")
-            break
-        else:
-            device = input("Dispositivo não existe! (Digite um dispositivo existente): ")
-
-    logging.info(f"Dispositivo {device} escolhido!")
-            
-### FUNÇÃO CONECTAR E ENTRAR
-def login_enter():
-
-    ### FUNÇÃO ENTRAR - BLOCO1
-    
-    buttonLoginElement = navegador.find_element_by_id(buttonLogin)
-
-    buttonLoginElement.click()
-
-    print("Login feito!")
-    sleep(2)
-
-    navegador.get(optionWireless)
-
-    print("Wireless acessado!")
-    sleep(2)
-
-    navegador.get(optionWirelessAdvanced)
-
-    print("Wireless Avançado acessado!")
-    sleep(2)
-    
-    ### FUNÇÃO ENTRAR BLOCO2
-    
-    buttonSetupELement = navegador.find_element_by_name(buttonSetup)
-
-    buttonSetupELement.click()
-
-    print("Cofiguração ACL acessado!")
-    sleep(2)
-
-    logging.info("Entrou na Rede!")
-
-### FUNÇÃO DELETAR
-def delete(): 
-
-    selectMACElement = navegador.find_element_by_xpath(xpath)
-
-    selectMACElement.click()
-
-    print(f"Dispositivo {device} escolhido!")
-    sleep(2)
-
-    buttonDeleteElement = navegador.find_element_by_name(buttonDelete)
-
-    buttonDeleteElement.click()
-
-    alerta = navegador.switch_to.alert
-    alerta.accept()
-
-    print(f"Dispositivo {device} deletado da rede!")
-
-    logging.info(f"Deletou Dispositivo {device}!")
-
-### FUNÇÃO ADICIONAR
-def add():   
-
-    inputMACElement = navegador.find_element_by_name(inputMAC)
-
-    inputMACElement.click()
-
-    inputMACElement.send_keys(wirelessClients[f"{device}"]["reduced-mac-address"])
-
-    buttonAddElement = navegador.find_element_by_name(buttonAdd)
-
-    buttonAddElement.click()
-
-    print(f"Dispositivo {device} adicionado na rede!")
-
-    logging.info(f"Adicionou Dispositivo {device}!")
-
 init = input("Quer iniciar? (s/n):")
 
 ## CONDICIONAL - INICIAR OU NÃO INICIAR
 if init == 's':
 
-    navegador = webdriver.Firefox()
-    navegador.set_window_position(16, 48)
-    navegador.set_window_size(850, 650)
-    
-    navegador.get(url)
+    open_browser()
     
     teste = input("Oque deseja realizar? (del/add):")
     
@@ -135,50 +23,45 @@ if init == 's':
     while True:
 
         if teste == 'd' or teste == 'deletar' or teste == 'del':
-            
-            validate()
+
+            device = validate()
             
             ## CONDICIONAL - CONTINUAR PROCESSO DE DELETAR OU ENCERRAR
             if device == 'exit':
 
                 print("Programa encerrado!")
-                sleep(2)
-                navegador.quit()
+                close_browser(2)
                 break
                 
             else:
 
                 login_enter()
                 delete()
-                sleep(2)
-                navegador.quit()
+                close_browser(2)
                 break
                 
         elif teste == 'a' or teste == 'adicionar' or teste == 'add':
             
-            validate()
+            device = validate()
             
             ## CONDICIONAL - CONTINUAR PROCESSO DE ADICIONAR OU ENCERRAR
             if device == 'exit':
 
                 print("Programa encerrado!")
-                sleep(2)
-                navegador.quit()
+                close_browser(2)
                 break
                 
             else:
 
                 login_enter()
                 add()
-                sleep(2)
-                navegador.quit()
+                close_browser(2)
                 break
                 
         elif teste == 'exit':
 
             print("Programa encerrado!")
-            sleep(2)
-            navegador.quit()
+            close_browser(2)
             break
         
         ## CONDIÇÃO CASO NÃO SEJA ADICIONAR, DELETAR OU ENCERRAR
