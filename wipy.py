@@ -2,10 +2,10 @@
 # coding: utf-8
 
 import logging
-import wipyfunctions
+from source.functions import wipyfunctions
 
 logging.basicConfig(
-    filename = "wipy.log", # Or /home/Your-User/Public/YourFolder/wipy.log
+    filename = "log/wipy.log", # Or /home/Your-User/Public/YourFolder/Wi-py/log/wipy.log
     level = logging.INFO, 
     format = "%(asctime)s - [Nível: %(levelno)s/INFO] [Função: %(funcName)s] [Ação: %(message)s]"
 )   

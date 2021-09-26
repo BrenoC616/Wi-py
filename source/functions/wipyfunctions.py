@@ -8,11 +8,11 @@ import logging
 import json
 
 ### ELEMENTOS
-elementsData = open("elements.json", "r") # Or /home/Your-User/Public/Your-Folder/elements.json
+elementsData = open("source/json/elements.json", "r") # Or /home/Your-User/Public/Your-Folder/Wi-py/source/json/elements.json
 elements = json.load(elementsData)
 
 ### ENDEREÇOS MAC
-wirelessClientsData = open("wirelessClients.json", "r") # Or /home/Your-User/Public/Your-Folder/wirelessClients.json
+wirelessClientsData = open("source/json/wirelessClients.json", "r") # Or /home/Your-User/Public/Your-Folder/Wi-py/source/json/wirelessClients.json
 wirelessClients = json.load(wirelessClientsData)
 
 ### FUNÇÃO: ABRIR NAGEVADOR E ACESSAR URL
