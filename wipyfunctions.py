@@ -8,7 +8,7 @@ import logging
 import json
 
 ### ELEMENTOS
-elements_dados = open("elements.json", "r") # Or /home/Your-User/Public/Your-Folder/wirelessClients.json
+elements_dados = open("elements.json", "r") # Or /home/Your-User/Public/Your-Folder/elements.json
 elements = json.load(elements_dados)
 
 ### ENDEREÇOS MAC
@@ -32,7 +32,6 @@ def validate():
 
     global device
     global xpath
-    global i
 
     device = input("Diga nome do dispositivo: ")
     
