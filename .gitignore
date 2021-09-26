@@ -1,2 +1,6 @@
 ## Logs
-*.log
+geckodriver.log
+wipy.log
+
+## Python Folders
+__pycache__
