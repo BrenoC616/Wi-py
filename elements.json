@@ -1,0 +1,16 @@
+{
+    "URL" : "http://192.168.0.1/login.htm",
+    "Buttons": {
+        "buttonAdd": "addFilterMac",
+        "buttonDelete": "deleteSelFilterMac",
+        "buttonLogin" : "loginBtn",
+        "buttonSetup" : "setupList"
+    },
+    "Inputs" : {
+        "inputMAC" : "mac"
+    },
+    "Options" : {
+        "optionWireless" : "http://192.168.0.1/wlan_basic.htm",
+        "optionWirelessAdvanced" : "http://192.168.0.1/wladvanced.htm"
+    }
+}

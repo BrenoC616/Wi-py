@@ -8,17 +8,12 @@ import logging
 import json
 
 ### ELEMENTOS
-buttonAdd = 'addFilterMac'
-buttonDelete = 'deleteSelFilterMac'
-buttonLogin = 'loginBtn'
-buttonSetup = 'setupList'
-inputMAC = 'mac'
-optionWireless = "http://192.168.0.1/wlan_basic.htm"
-optionWirelessAdvanced = "http://192.168.0.1/wladvanced.htm"
-url = 'http://192.168.0.1/login.htm'
+elements_dados = open("elements.json", "r") # Or /home/Your-User/Public/Your-Folder/wirelessClients.json
+elements = json.load(elements_dados)
 
-dados = open("wirelessClients.json", "r") # Or /home/Your-User/Public/Your-Folder/wirelessClients.json
-wirelessClients = json.load(dados)
+### ENDEREÇOS MAC
+wirelessClients_dados = open("wirelessClients.json", "r") # Or /home/Your-User/Public/Your-Folder/wirelessClients.json
+wirelessClients = json.load(wirelessClients_dados)
 
 ### FUNÇÃO: ABRIR NAGEVADOR E ACESSAR URL
 def open_browser():
@@ -30,7 +25,7 @@ def open_browser():
     navegador.set_window_position(16, 48)
     navegador.set_window_size(850, 650)
     
-    navegador.get(url)
+    navegador.get(elements["URL"])
 
 ### FUNÇÃO: VALIDAÇÃO
 def validate():
@@ -60,26 +55,26 @@ def login_enter():
 
     ### FUNÇÃO ENTRAR - BLOCO1
     
-    buttonLoginElement = navegador.find_element_by_id(buttonLogin)
+    buttonLoginElement = navegador.find_element_by_id(elements["Buttons"]["buttonLogin"])
 
     buttonLoginElement.click()
 
     print("Login feito!")
     sleep(2)
 
-    navegador.get(optionWireless)
+    navegador.get(elements["Options"]["optionWireless"])
 
     print("Wireless acessado!")
     sleep(2)
 
-    navegador.get(optionWirelessAdvanced)
+    navegador.get(elements["Options"]["optionWirelessAdvanced"])
 
     print("Wireless Avançado acessado!")
     sleep(2)
     
     ### FUNÇÃO ENTRAR BLOCO2
     
-    buttonSetupELement = navegador.find_element_by_name(buttonSetup)
+    buttonSetupELement = navegador.find_element_by_name(elements["Buttons"]["buttonSetup"])
 
     buttonSetupELement.click()
 
@@ -98,7 +93,7 @@ def delete():
     print(f"Dispositivo {device} escolhido!")
     sleep(2)
 
-    buttonDeleteElement = navegador.find_element_by_name(buttonDelete)
+    buttonDeleteElement = navegador.find_element_by_name(elements["Buttons"]["buttonDelete"])
 
     buttonDeleteElement.click()
 
@@ -112,13 +107,13 @@ def delete():
 ### FUNÇÃO: ADICIONAR
 def add():   
 
-    inputMACElement = navegador.find_element_by_name(inputMAC)
+    inputMACElement = navegador.find_element_by_name(elements["Inputs"]["inputMAC"])
 
     inputMACElement.click()
 
     inputMACElement.send_keys(wirelessClients[f"{device}"]["reduced-mac-address"])
 
-    buttonAddElement = navegador.find_element_by_name(buttonAdd)
+    buttonAddElement = navegador.find_element_by_name(elements["Buttons"]["buttonAdd"])
 
     buttonAddElement.click()
 
