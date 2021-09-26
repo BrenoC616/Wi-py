@@ -38,7 +38,7 @@ def validate():
     
     while True:  
         
-        if device in wirelessClients["valid-devices"]:
+        if device in wirelessClients:
             xpath = '//*[@value="%s"]' % wirelessClients[f"{device}"]["reduced-mac-address"] #XPATH (Ex.: //*[@value="71f34vd707fk"])
             break
         elif device == 'exit':

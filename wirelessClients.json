@@ -1,18 +1,4 @@
 {
-    "valid-devices" : [
-        "Default-1",
-        "Default-2",
-        "Default-3",
-        "Default-4",
-        "Default-5",
-        "Default-6",
-        "Default-7",
-        "Default-8",
-        "Default-9",
-        "Default-10",
-        "Default-11"
-    ]
-    ,
     "Default-1" : {
         "call-name" : "Default One",
         "name" : "Unknown",
