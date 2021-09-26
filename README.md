@@ -1,4 +1,4 @@
-![](github/png/wipy-logo.png)
+![](.github/png/wipy-logo.png)
 
 # **Sobre**
 
@@ -93,7 +93,7 @@ ou
 
 	~$ python3 wipy.py
 
-![](github/gif/giphy.gif)
+![](.github/gif/giphy.gif)
 
 Também é possível fazer a criação de um **alias** em ambientes Linux, assim facilitando a execução do programa. Para isso usa-se o seguinte comando:
 
