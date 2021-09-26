@@ -17,12 +17,12 @@ if init == 's':
 
     wipyfunctions.open_browser()
     
-    teste = input("Oque deseja realizar? (del/add):")
+    action = input("Oque deseja realizar? (del/add):")
     
     ## LOOP CONDICIONAL - DELETAR MAC, ADICIONAR MAC OU ENCERRAR
     while True:
 
-        if teste == 'd' or teste == 'deletar' or teste == 'del':
+        if action == 'd' or action == 'deletar' or action == 'del':
 
             device = wipyfunctions.validate()
             
@@ -40,7 +40,7 @@ if init == 's':
                 wipyfunctions.close_browser(2)
                 break
                 
-        elif teste == 'a' or teste == 'adicionar' or teste == 'add':
+        elif action == 'a' or action == 'adicionar' or action == 'add':
             
             device = wipyfunctions.validate()
             
@@ -58,7 +58,7 @@ if init == 's':
                 wipyfunctions.close_browser(2)
                 break
                 
-        elif teste == 'exit':
+        elif action == 'exit':
 
             print("Programa encerrado!")
             wipyfunctions.close_browser(2)
@@ -67,7 +67,7 @@ if init == 's':
         ## CONDIÇÃO CASO NÃO SEJA ADICIONAR, DELETAR OU ENCERRAR
         else:
 
-            teste = input("Opção inválida! (digite deletar/del/d ou adicionar/add/a):")
+            action = input("Opção inválida! (digite deletar/del/d ou adicionar/add/a):")
 else:
 
     print("Não iniciado!")
