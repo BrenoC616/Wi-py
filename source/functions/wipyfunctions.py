@@ -121,7 +121,7 @@ def add():
     logging.info(f"Adicionou Dispositivo {device}!")
 
 ### FUNÇÃO: FECHAR NAVEGADOR
-def close_browser(secs):
+def close_browser(secs=2):
 
     sleep(secs)
 
