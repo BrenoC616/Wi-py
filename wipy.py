@@ -12,6 +12,8 @@ logging.basicConfig(
 
 init = input("Quer iniciar? (s/n):")
 
+wipyfunctions.set_browser()
+
 ## CONDICIONAL - INICIAR OU NÃO INICIAR
 if init == 's':
 
@@ -30,14 +32,14 @@ if init == 's':
             if device == 'exit':
 
                 print("Programa encerrado!")
-                wipyfunctions.close_browser(2)
+                wipyfunctions.close_browser()
                 break
                 
             else:
 
                 wipyfunctions.login_enter()
                 wipyfunctions.delete()
-                wipyfunctions.close_browser(2)
+                wipyfunctions.close_browser()
                 break
                 
         elif action == 'a' or action == 'adicionar' or action == 'add':
@@ -48,20 +50,20 @@ if init == 's':
             if device == 'exit':
 
                 print("Programa encerrado!")
-                wipyfunctions.close_browser(2)
+                wipyfunctions.close_browser()
                 break
                 
             else:
 
                 wipyfunctions.login_enter()
                 wipyfunctions.add()
-                wipyfunctions.close_browser(2)
+                wipyfunctions.close_browser()
                 break
                 
         elif action == 'exit':
 
             print("Programa encerrado!")
-            wipyfunctions.close_browser(2)
+            wipyfunctions.close_browser()
             break
         
         ## CONDIÇÃO CASO NÃO SEJA ADICIONAR, DELETAR OU ENCERRAR

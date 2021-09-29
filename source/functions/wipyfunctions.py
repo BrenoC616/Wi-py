@@ -6,21 +6,58 @@ from time import sleep
 from selenium.webdriver.common.keys import Keys
 import logging
 import json
+import configparser
+
+config = configparser.ConfigParser()
 
 ### ELEMENTOS
-elementsData = open("source/json/elements.json", "r") # Or /home/Your-User/Public/Your-Folder/Wi-py/source/json/elements.json
-elements = json.load(elementsData)
+with open("source/json/elements.json", "r") as elementsData: 
+    elements = json.load(elementsData)
 
 ### ENDEREÇOS MAC
-wirelessClientsData = open("source/json/wirelessClients.json", "r") # Or /home/Your-User/Public/Your-Folder/Wi-py/source/json/wirelessClients.json
-wirelessClients = json.load(wirelessClientsData)
+with open("source/json/wirelessClients.json", "r") as wirelessClientsData:  
+    wirelessClients = json.load(wirelessClientsData)
+
+### FUNÇÃO: DEFINIR NAVEGADOR
+def set_browser():
+
+    filepath = "source/config/config.ini"
+
+    config.read(filepath)
+
+    configDefault = config["default"]
+
+    configDefaultSet = configDefault["set"]
+
+    if configDefaultSet == "0":
+        value = input("Defina seu navegador (Chrome/Firefox): ")
+
+        configDefault["browser"] = value
+        configDefault["set"] = "1"
+
+        with open(filepath, "w") as configfile:
+            config.write(configfile)
 
 ### FUNÇÃO: ABRIR NAGEVADOR E ACESSAR URL
 def open_browser():
 
+    filepath = "source/config/config.ini"
+
+    config.read(filepath)
+
+    configDefault = config["default"]
+
+    configDefaultBrowser = configDefault["browser"]
+
     global browser
 
-    browser = webdriver.Firefox()
+    if configDefaultBrowser == "Firefox":
+        browser = webdriver.Firefox()
+            
+    elif configDefaultBrowser == "Chrome":
+        chromeOptions = webdriver.ChromeOptions()
+        chromeOptions.add_argument("--remote-debugging-port=9222") 
+        browser = webdriver.Chrome(chrome_options=chromeOptions)
 
     browser.set_window_position(16, 48)
     browser.set_window_size(850, 650)
