@@ -1,10 +1,14 @@
 ## Logs
 geckodriver.log
+wipy.log
+*.log
 
 ## Python Folders
 __pycache__
 
 ## Drivers
-
+chromedriver
+geckodriver
 
 ## Config
+*.ini
