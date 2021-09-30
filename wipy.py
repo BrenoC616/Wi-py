@@ -1,5 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
+
 
 import logging
 from source.functions import wipyfunctions
@@ -10,9 +9,9 @@ logging.basicConfig(
     format="%(asctime)s - [Nível: %(levelno)s/INFO] [Função: %(funcName)s] [Ação: %(message)s]")
 
 init = input("Quer iniciar? (s/n):")
-wipyfunctions.set_browser()
 
 if init == 's':
+    wipyfunctions.set_browser()
     wipyfunctions.open_browser()
     action = input("Oque deseja realizar? (del/add):")
     
