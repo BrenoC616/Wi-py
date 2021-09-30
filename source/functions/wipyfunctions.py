@@ -26,10 +26,14 @@ def set_browser():
     if configDefaultSet == "0":
         value = input("Defina seu navegador (Chrome/Firefox): ")
         configDefault["browser"] = value
-        configDefault["set"] = "1"
 
-        with open(filepath, "w") as configfile:
-            config.write(configfile)
+        value = input("Usar este navegador para todas as próximas execuções? (S/n):")
+    
+        if value == "s" or value == "S":
+            configDefault["set"] = "1"
+
+    with open(filepath, "w") as configfile:
+        config.write(configfile)
 
 
 def open_browser():
